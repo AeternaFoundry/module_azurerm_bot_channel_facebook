@@ -62,22 +62,6 @@ EOT
   validation {
     condition = alltrue([
       for k, v in var.bot_channel_facebooks : (
-        length(v.bot_name) >= 4
-      )
-    ])
-    error_message = "[from validate.BotName: invalid when len(value) < 4]"
-  }
-  validation {
-    condition = alltrue([
-      for k, v in var.bot_channel_facebooks : (
-        length(v.bot_name) <= 42
-      )
-    ])
-    error_message = "[from validate.BotName: invalid when len(value) > 42]"
-  }
-  validation {
-    condition = alltrue([
-      for k, v in var.bot_channel_facebooks : (
         length(v.facebook_application_id) > 0
       )
     ])
@@ -107,6 +91,6 @@ EOT
     ])
     error_message = "must not be empty"
   }
-  # Note: 4 additional provider-side validators are enforced at apply time but not mirrored as validation{} blocks here (bespoke or non-mechanically-translatable).
+  # Note: 3 additional provider-side validators are enforced at apply time but not mirrored as validation{} blocks here (bespoke or non-mechanically-translatable).
 }
 
